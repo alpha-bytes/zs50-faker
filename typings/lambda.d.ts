@@ -7,9 +7,4 @@ export declare interface IEvent{
     isBase64Encoded: boolean; 
 }
 
-export declare interface IHandlerResponse{
-    statusCode: number, 
-    body: string
-}
-
 export declare type callbackFn = (error: string | null, response: object) => void; 
