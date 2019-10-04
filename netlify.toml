@@ -1,1 +1,2 @@
-functions="./fn"
+[dev]
+    functions="functions/build"

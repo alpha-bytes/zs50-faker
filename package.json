@@ -4,9 +4,17 @@
   "description": "Fake data for zs50's week5 challenges.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "tsc; netlify-lambda serve functions/src/js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^12.7.11",
+    "netlify-lambda": "^1.6.3"
+  },
+  "dependencies": {
+    "faker": "^4.1.0"
+  }
 }
