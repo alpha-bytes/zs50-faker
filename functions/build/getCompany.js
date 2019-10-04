@@ -39,7 +39,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.handler = function (event, context) { return __awaiter(void 0, void 0, void 0, function () {
     var res;
     return __generator(this, function (_a) {
-        console.log(event);
         res = {
             statusCode: 201,
             body: event.body
