@@ -1,9 +1,15 @@
 import { IEvent } from '../../typings/lambda'; 
 import * as faker from 'faker'; 
 
+/**
+ * Response interface
+ */
 interface IHandlerResponse{
     statusCode: number, 
-    body?: string
+    body?: string, 
+    headers?: {
+        [key: string]: string
+    }
 }
 
 interface FakeCompany{
