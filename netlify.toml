@@ -1,5 +1,3 @@
-[dev]
-    functions="functions/build"
-
 [build]
+    command="netlify-lambda build functions/src/js"
     functions="functions/build"
