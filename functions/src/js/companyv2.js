@@ -1,4 +1,17 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -44,11 +57,30 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var faker = __importStar(require("faker"));
+var Company_1 = require("./base/Company");
+var CompanyV2 = /** @class */ (function (_super) {
+    __extends(CompanyV2, _super);
+    function CompanyV2() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return CompanyV2;
+}(Company_1.Company));
 exports.handler = function (event, context) { return __awaiter(void 0, void 0, void 0, function () {
-    var res, _a, company, fakeCompany;
+    var res, theCompany, _a, company, fakeCompany;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
+                theCompany = new CompanyV2(event);
+                try {
+                    theCompany.validate();
+                }
+                catch (err) {
+                    res = {
+                        statusCode: 400,
+                        body: err.message
+                    };
+                    return [2 /*return*/, res];
+                }
                 _a = event.httpMethod;
                 switch (_a) {
                     case 'GET' || 'get': return [3 /*break*/, 1];
@@ -58,6 +90,7 @@ exports.handler = function (event, context) { return __awaiter(void 0, void 0, v
             case 2:
                 company = _b.sent();
                 fakeCompany = {
+                    company: theCompany.company,
                     catchPhrase: company[0],
                     industry: company[1],
                     latitude: company[2],
