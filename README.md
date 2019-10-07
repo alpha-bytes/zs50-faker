@@ -8,7 +8,7 @@ This repo contains source files which are served (after build step) as Lambda fu
 
 ### Testing Locally
 
-The [package.json](./package.json) file contains an npm script `serve` that can be used to test functions on a local server. This command first runs `tsc` to transpile Typescript src to js. Then, it calls the `netlify-lambda` cli to build the minified source to run. 
+The [package.json](./package.json) file contains an npm script `serve` that can be used to test functions on a local server. This command first runs `tsc` to transpile Typescript src to js. Then, it calls the `netlify-lambda` cli to build the minified source to run. These build files should not be committed to source control and have been .gitignored. 
 
 ### Deploying Changes
 

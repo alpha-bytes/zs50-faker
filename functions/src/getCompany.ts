@@ -14,6 +14,7 @@ interface IHandlerResponse{
 
 interface FakeCompany{
     catchPhrase: string; 
+    industry: string; 
     latitude: string; 
     longitude: string; 
 }
@@ -24,11 +25,12 @@ exports.handler = async (event: IEvent, context: any): Promise<IHandlerResponse>
 
     switch(event.httpMethod){
         case 'GET' || 'get': 
-            const company = await faker.fake('{{company.catchPhrase}}, {{address.latitude}}, {{address.longitude}}').split(', '); 
+            const company = await faker.fake('{{company.catchPhrase}}, {{commerce.department}}, {{address.latitude}}, {{address.longitude}}').split(', '); 
             const fakeCompany: FakeCompany = {
                 catchPhrase: company[0],
-                latitude: company[1], 
-                longitude: company[2]
+                industry: company[1],
+                latitude: company[2], 
+                longitude: company[3]
             }
             res = {
                 body: JSON.stringify(fakeCompany), 
