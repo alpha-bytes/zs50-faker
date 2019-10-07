@@ -21,13 +21,17 @@ exports.handler = async (event: IEvent, context: any): Promise<IHandlerResponse>
 
     switch(event.httpMethod){
         case 'GET' || 'get': 
-            const company = await faker.fake('{{company.catchPhrase}}, {{commerce.department}}, {{address.latitude}}, {{address.longitude}}').split(', '); 
+            const company = await faker.fake('{{company.catchPhrase}}, {{commerce.department}}, {{address.streetAddress}}, {{address.city}}, {{address.stateAbbr}}, {{address.zipCode}}').split(', '); 
             const fakeCompany: CompanyResponse = {
                 company: theCompany.company,
                 catchPhrase: company[0],
                 industry: company[1],
-                latitude: company[2], 
-                longitude: company[3]
+                address: {
+                    street: company[2], 
+                    city: company[3], 
+                    stateCode: company[4], 
+                    postalCode: company[5]
+                }
             }
             res = {
                 body: JSON.stringify(fakeCompany), 

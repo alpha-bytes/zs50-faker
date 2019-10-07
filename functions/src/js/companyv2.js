@@ -86,15 +86,19 @@ exports.handler = function (event, context) { return __awaiter(void 0, void 0, v
                     case 'GET' || 'get': return [3 /*break*/, 1];
                 }
                 return [3 /*break*/, 3];
-            case 1: return [4 /*yield*/, faker.fake('{{company.catchPhrase}}, {{commerce.department}}, {{address.latitude}}, {{address.longitude}}').split(', ')];
+            case 1: return [4 /*yield*/, faker.fake('{{company.catchPhrase}}, {{commerce.department}}, {{address.streetAddress}}, {{address.city}}, {{address.stateAbbr}}, {{address.zipCode}}').split(', ')];
             case 2:
                 company = _b.sent();
                 fakeCompany = {
                     company: theCompany.company,
                     catchPhrase: company[0],
                     industry: company[1],
-                    latitude: company[2],
-                    longitude: company[3]
+                    address: {
+                        street: company[2],
+                        city: company[3],
+                        stateCode: company[4],
+                        postalCode: company[5]
+                    }
                 };
                 res = {
                     body: JSON.stringify(fakeCompany),
